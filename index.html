@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jola Café Lifestyle Lounge - Sterkspruit's Premier Entertainment Venue</title>
+    <meta name="description" content="Experience the vibrant nightlife, exquisite African cuisine, and unforgettable live performances at Jola Café Lifestyle Lounge in Sterkspruit, Eastern Cape.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.2/alpine.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+    <link rel="stylesheet" href="src\index.css">
+</head>
+<body class="font-sans text-gray-800 bg-gray-100">
+    <header class="bg-purple-900 text-white shadow-lg" x-data="{ isOpen: false }">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold font-hoofer">Jola Café</a>
+            </div>
+            <div class="hidden md:flex">
+                <a href="#home" class="mx-3 hover:text-purple-300">Home</a>
+                <a href="#about" class="mx-3 hover:text-purple-300">About Us</a>
+                <a href="#menu" class="mx-3 hover:text-purple-300">Menu</a>
+                <a href="#events" class="mx-3 hover:text-purple-300">Events</a>
+                <a href="#gallery" class="mx-3 hover:text-purple-300">Gallery</a>
+                <a href="#contact" class="mx-3 hover:text-purple-300">Contact</a>
+                <a href="#blog" class="mx-3 hover:text-purple-300">Blog</a>
+            </div>
+            <div class="md:hidden">
+                <button @click="isOpen = !isOpen" type="button" class="text-white focus:outline-none">
+                    <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                        <path x-show="!isOpen" fill-rule="evenodd" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"></path>
+                        <path x-show="isOpen" fill-rule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div x-show="isOpen" class="md:hidden">
+            <a href="#home" class="block py-2 px-4 text-sm hover:bg-purple-800">Home</a>
+            <a href="#about" class="block py-2 px-4 text-sm hover:bg-purple-800">About Us</a>
+            <a href="#menu" class="block py-2 px-4 text-sm hover:bg-purple-800">Menu</a>
+            <a href="#events" class="block py-2 px-4 text-sm hover:bg-purple-800">Events</a>
+            <a href="#gallery" class="block py-2 px-4 text-sm hover:bg-purple-800">Gallery</a>
+            <a href="#contact" class="block py-2 px-4 text-sm hover:bg-purple-800">Contact</a>
+            <a href="#blog" class="block py-2 px-4 text-sm hover:bg-purple-800">Blog</a>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- Home Section with Carousel -->
+<section id="home" class="relative h-screen overflow-hidden">
+    <div x-data="carousel()" x-init="init()" class="absolute inset-0">
+        <template x-for="(image, index) in images" :key="index">
+            <div x-show="currentIndex === index" class="absolute inset-0 transition-opacity duration-1000" :class="{'opacity-100': currentIndex === index, 'opacity-0': currentIndex !== index}">
+                <img :src="image" alt="Jola Café" class="w-full h-full object-cover">
+            </div>
+        </template>
+    </div>
+    <div class="absolute inset-0 bg-black bg-opacity-50 backdrop-filter backdrop-blur-sm"></div>
+    <div class="relative h-full flex items-center justify-center text-white">
+        <div class="text-center">
+            <h1 class="text-5xl font-bold mb-4 font-hoofer">Welcome to Jola Café Lifestyle Lounge</h1>
+            <p class="text-xl mb-8">Experience the vibrant fusion of great food, live music, and unforgettable nights</p>
+            <a href="#events" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Upcoming Events</a>
+        </div>
+    </div>
+</section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-8 text-center">About Jola Café</h2>
+                <div class="flex flex-wrap -mx-4">
+                    <div class="w-full md:w-1/2 px-4 mb-8">
+                        <img src="../assets\facade2.jpg" alt="Jola Café interior" class="rounded-lg shadow-lg">
+                    </div>
+                    <div class="w-full md:w-1/2 px-4">
+                        <p class="mb-4">Jola Café Lifestyle Lounge is Sterkspruit's premier destination for those seeking an extraordinary nightlife experience. We blend the rich flavors of African cuisine with the pulsating rhythms of live music, creating an atmosphere that's both culturally immersive and wildly entertaining.</p>
+                        <p class="mb-4">Our mission is to provide a platform for local and national artists while serving up mouth-watering dishes that celebrate our African heritage. We're more than just a lounge - we're a cultural hub where memories are made and stories are born.</p>
+                        <p>Since our inception, we've been committed to elevating the entertainment scene in Sterkspruit. Join us for an unforgettable night where every visit promises new experiences and connections.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-8 text-center">Our Menu</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="../assets\plate.jpg" alt="Jollof Rice" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold text-xl mb-2">Jollof Rice</h3>
+                            <p class="text-gray-700">A West African classic, our Jollof Rice is a flavorful dish that will transport your taste buds across the continent.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="../assets\plate2.jpg" alt="Pap and Chakalaka" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold text-xl mb-2">Pap and Chakalaka</h3>
+                            <p class="text-gray-700">A South African staple, our creamy pap is served with spicy chakalaka, a perfect comfort food combination.</p>
+                        </div>
+                    </div>
+                    <div class="menu-item bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="../assets\plate3.jpg" alt="African Sunset Cocktail" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold text-xl mb-2">African Sunset Cocktail</h3>
+                            <p class="text-gray-700">Our signature cocktail blends local spirits with tropical fruits for a taste of African paradise.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <a href="#" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-full transition duration-300">Download Full Menu (PDF)</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-8 text-center">Upcoming Events</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+                        <img src="../assets/poster.jpg" alt="Jazz Night" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold text-xl mb-2">Jazz Night with Sipho Hotstix Mabuse</h3>
+                            <p class="text-gray-700 mb-4">Join us for an unforgettable evening of smooth jazz with the legendary Sipho Hotstix Mabuse.</p>
+                            <p class="text-purple-600 font-bold">Date: September 20, 2024</p>
+                            <a href="#" class="mt-4 inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300">Book Tickets</a>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+                        <img src="../assets\poster2.jpg" alt="African Cuisine Festival" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold text-xl mb-2">African Cuisine Festival</h3>
+                            <p class="text-gray-700 mb-4">Experience a culinary journey across Africa with our special tasting menu and live cooking demonstrations.</p>
+                            <p class="text-purple-600 font-bold">Date: October 5-7, 2024</p>
+                            <a href="#" class="mt-4 inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300">Reserve Your Spot</a>
+                        </div>
+                    </div>
+                    <div class="bg-gray-100 rounded-lg shadow-lg overflow-hidden">
+                        <img src="../assets\spot-dj.jpg" alt="DJ Night" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="font-bold text-xl mb-2">Afrobeats Takeover with DJ Maphorisa</h3>
+                            <p class="text-gray-700 mb-4">Get ready to dance the night away with the hottest Afrobeats tracks spun by DJ Maphorisa.</p>
+                            <p class="text-purple-600 font-bold">Date: October 15, 2024</p>
+                            <a href="#" class="mt-4 inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300">Get Tickets</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-8 text-center">Photo Gallery</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    <img src="../assets\crowd.jpg" alt="Jola Café event" class="w-full h-64 object-cover rounded-lg shadow-md">
+                    <img src="../assets\murumba1.jpg" alt="Live performance" class="w-full h-64 object-cover rounded-lg shadow-md">
+                    <img src="../assets\bottles.jpg" alt="Cocktail preparation" class="w-full h-64 object-cover rounded-lg shadow-md">
+                    <img src="../assets\jola-chairs.jpg" alt="Dining area" class="w-full h-64 object-cover rounded-lg shadow-md">
+                    <img src="../assets\booth-yamza.jpg" alt="DJ booth" class="w-full h-64 object-cover rounded-lg shadow-md">
+                    <img src="../assets\jola-dancefloor.jpg" alt="Dance floor" class="w-full h-64 object-cover rounded-lg shadow-md">
+                    <img src="../assets\buffet.jpg" alt="African cuisine" class="w-full h-64 object-cover rounded-lg shadow-md">
+                    <img src="../assets\jola-seating.jpg" alt="Lounge area" class="w-full h-64 object-cover rounded-lg shadow-md">
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-16 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-8 text-center">Contact & Reservations</h2>
+                <div class="flex flex-wrap -mx-4">
+                    <div class="w-full md:w-1/2 px-4 mb-8">
+                        <h3 class="text-xl font-bold mb-4">Get in Touch</h3>
+                        <p class="mb-2"><strong>Address:</strong> 123 Main Street, Sterkspruit, Eastern Cape</p>
+                        <p class="mb-2"><strong>Phone:</strong> +27 12 345 6789</p>
+                        <p class="mb-2"><strong>Email:</strong> info@jolacafe.com</p>
+                        <p class="mb-4"><strong>Hours:</strong> Tuesday - Sunday, 4 PM - 2 AM</p>
+                        <div class="mb-4">
+                            <h4 class="font-bold mb-2">Follow Us:</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-purple-600 hover:text-purple-800">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                </a>
+                                <a href="#" class="text-purple-600 hover:text-purple-800">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                                </a>
+                                <a href="#" class="text-purple-600 hover:text-purple-800">
+                                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 px-4">
+                        <h3 class="text-xl font-bold mb-4">Make a Reservation</h3>
+                        <form id="reservation-form" class="space-y-4">
+                            <div>
+                                <label for="name" class="block mb-2">Name</label>
+                                <input type="text" id="name" name="name" class="w-full px-3 py-2 border rounded-md" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-2">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-3 py-2 border rounded-md" required>
+                            </div>
+                            <div>
+                                <label for="date" class="block mb-2">Date</label>
+                                <input type="date" id="date" name="date" class="w-full px-3 py-2 border rounded-md" required>
+                            </div>
+                            <div>
+                                <label for="time" class="block mb-2">Time</label>
+                                <input type="time" id="time" name="time" class="w-full px-3 py-2 border rounded-md" required>
+                            </div>
+                            <div>
+                                <label for="guests" class="block mb-2">Number of Guests</label>
+                                <input type="number" id="guests" name="guests" min="1" max="20" class="w-full px-3 py-2 border rounded-md" required>
+                            </div>
+                            <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300">Submit Reservation</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="py-16 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-8 text-center">Latest News & Updates</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="../assets\menu.jpg" alt="New menu items" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2">Exciting New Additions to Our Menu</h3>
+                            <p class="text-gray-700 mb-4">We're thrilled to announce the launch of our new seasonal menu, featuring innovative dishes that blend traditional African flavors with modern culinary techniques.</p>
+                            <a href="#" class="text-purple-600 hover:text-purple-800 font-bold">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="../assets\phori-dance.jpg" alt="Artist spotlight" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2">Artist Spotlight: Zonke Dikana</h3>
+                            <p class="text-gray-700 mb-4">We sat down with the talented Zonke Dikana to discuss her upcoming performance at Jola Café and her journey in the music industry.</p>
+                            <a href="#" class="text-purple-600 hover:text-purple-800 font-bold">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="../assets\jola-counter.jpg" alt="Cocktail masterclass" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2">Join Our Cocktail Masterclass</h3>
+                            <p class="text-gray-700 mb-4">Learn the art of mixology from our expert bartenders in this hands-on workshop. Limited spots available for our upcoming session!</p>
+                            <a href="#" class="text-purple-600 hover:text-purple-800 font-bold">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-purple-900 text-white py-8">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap justify-between">
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">Jola Café</h3>
+                    <p>Experience the vibrant fusion of great food, live music, and unforgettable nights in Sterkspruit.</p>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">Quick Links</h3>
+                    <ul>
+                        <li><a href="#home" class="hover:text-purple-300">Home</a></li>
+                        <li><a href="#about" class="hover:text-purple-300">About Us</a></li>
+                        <li><a href="#menu" class="hover:text-purple-300">Menu</a></li>
+                        <li><a href="#events" class="hover:text-purple-300">Events</a></li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                    <h3 class="text-xl font-bold mb-2">Contact</h3>
+                    <p>123 Main Street, Sterkspruit, Eastern Cape</p>
+                    <p>Phone: +27 12 345 6789</p>
+                    <p>Email: info@jolacafe.com</p>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <h3 class="text-xl font-bold mb-2">Newsletter</h3>
+                    <p class="mb-4">Stay updated with our latest events and offers.</p>
+                    <form id="newsletter-form" class="flex">
+                        <input type="email" placeholder="Your email" class="px-3 py-2 w-full text-gray-700 rounded-l" required>
+                        <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white px-4 rounded-r transition duration-300">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-purple-800 mt-8 pt-8 text-sm text-center">
+                <p>&copy; 2024 Jola Café Lifestyle Lounge. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="src\index.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Hoofer Line Med Oblique';
+    src: url('path/to/HooferLineMedOblique.otf') format('opentype');
+    font-weight: normal;
+    font-style: oblique;
+}
+
+.font-hoofer {
+    font-family: 'Hoofer Line Med Oblique', sans-serif;
+}
+
+[x-cloak] { display: none; }
+.hero-image {
+    background-image: url('/api/placeholder/1200/600');
+    background-size: cover;
+    background-position: center;
+}
+.menu-item img {
+    transition: transform 0.3s ease-in-out;
+}
+.menu-item:hover img {
+    transform: scale(1.05);
+}
+
+.backdrop-filter {
+    backdrop-filter: blur(4px);
+}
