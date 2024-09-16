@@ -2,9 +2,9 @@ function carousel() {
     return {
         currentIndex: 0,
         images: [
-            '../assets/hero.jpg',
-            '../assets/jola-facade.jpg',
-            '../assets/jola-drone.jpg'
+            'assets/hero.jpg',
+            'assets/jola-facade.jpg',
+            'assets/jola-drone.jpg'
         ],
         init() {
             setInterval(() => {
